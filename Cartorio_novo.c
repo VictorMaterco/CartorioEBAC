@@ -148,7 +148,8 @@ int main() //Função_Principal
 		printf("Escolha a opção desejada\n\n"); //início do Menu
 		printf("\t1 - Registrar nomes\n");
 		printf("\t2 - Consultar nomes\n");
-		printf("\t3 - Deletar nomes\n\n"); //Fim do menu
+		printf("\t3 - Deletar nomes\n");
+		printf("\t4 - Sair do sistema\n\n"); //Fim do menu
 		printf("Esse Software foi criado pelo programador VictorMaterco\n\n"); //assinatura do criador
 		printf(" Digite a opção desejada: "); //escolha do usuário
 		scanf("%d", &opcao); //armazenando a escolha do usuário
@@ -168,7 +169,13 @@ int main() //Função_Principal
 			case 3:
 				deletar();
 				break;
-			
+				
+			case 4:
+				printf("*** Cartório da EBAC ***\n\n");
+				printf("Obrigado por utilizar nosso sistema!");
+				return 0;
+				break;
+				
 			default:
 				printf("*** Cartório da EBAC ***\n\n"); //Nome do programa
 				printf("Essa opção não está disponível!\n\n");
