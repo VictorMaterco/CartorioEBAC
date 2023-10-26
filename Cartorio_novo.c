@@ -8,6 +8,7 @@ int registrar() //Função responsavel por cadastar os usuários no sistema
 {
 	setlocale(LC_ALL, "portuguese"); //Definindo a linguagem usada
 	//início criação de variáveis/string
+	char opcao=0;
 	char cpf[40]; 
 	char nome[40]; 
 	char sobrenome[40];
@@ -19,7 +20,7 @@ int registrar() //Função responsavel por cadastar os usuários no sistema
 	printf("Digite o CPF a ser cadastrado: "); //coletando informação de usuário
 	scanf("%s", cpf); //%s refere-se a string
 	printf("\n");
-	
+
 	strcpy(arquivo, cpf); //Responsavel por copiar os valores das string
 	
 	FILE *file; // informando que o computador tem que acessar arquivo.
@@ -27,15 +28,15 @@ int registrar() //Função responsavel por cadastar os usuários no sistema
 	fprintf(file, "CPF: ");
 	fprintf(file, cpf); //Salvando o valor da variavel
 	fclose(file); //fechando o arquivo
-	
+
 	file = fopen(arquivo, "a");//editando arquivo
 	fprintf(file, ". "); //salvando o valor da variavel
 	fclose(file); //fechando o arquivo
-	
+
 	printf("Digite o nome a ser cadastrado: "); //coletando informação do usuário
 	scanf("%s", nome);
 	printf("\n");
-	
+
 	file = fopen(arquivo, "a"); //editando arquivo, "a" significa editar
 	fprintf(file, "Nome: ");
 	fprintf(file, nome);
@@ -61,16 +62,45 @@ int registrar() //Função responsavel por cadastar os usuários no sistema
 	fprintf(file, ".");
 	fclose(file);
 	
-	printf("\n");
+	printf("Cadastro feito com sucesso!\n\n");
 	
 	system("pause");
+	system("cls");
 	
+	printf("O que deseja fazer agora?\n\n");
+	printf("\t1 - Registrar novo nome\n");
+	printf("\t2 - Consultar nomes\n");
+	printf("\t3 - Deletar nomes\n");
+	printf("\t4 - Voltar ao Menu\n\n");
+	printf("Digite a opção desejada: ");
+	scanf("%d", &opcao);
+	
+	system("cls");
+	
+	
+	switch(opcao)
+	{
+		case 1:
+			registrar();
+			break;
+		case 2:
+			consultar();
+			break;
+		case 3:
+			deletar();
+				break;
+		
+		default:
+			main();
+			break;	
+	} 	
 }
 
 int consultar() //Função responsavel por consultar usuários no sistema
 {
 	setlocale(LC_ALL, "portuguese");//Definindo a linguagem usada
 	//criação de variáveis/strings
+	int opcao=0;
 	char cpf[40];
 	char conteudo[200];
 	//final da criação
@@ -85,6 +115,8 @@ int consultar() //Função responsavel por consultar usuários no sistema
 	if(file == NULL) //consultando o banco de dados para ver se tem o cpf no sistema
 	{
 		printf("\nNão achamos esse número de CPF em nosso sistema, tente novamente!\n\n");
+		system("pause");
+		system("cls");
 	}
 	
 	while(fgets(conteudo, 200, file) != NULL) //pegando os dados do usuário no banco de dados
@@ -95,6 +127,35 @@ int consultar() //Função responsavel por consultar usuários no sistema
 	}
 	
 	system("pause");
+	system("cls");
+	
+	printf("O que deseja fazer agora?\n\n");
+	printf("\t1 - Consultar novo nome\n");
+	printf("\t2 - Registrar nomes\n");
+	printf("\t3 - Deletar nomes\n");
+	printf("\t4 - Voltar ao Menu\n\n");
+	printf("Digite a opção desejada: ");
+	scanf("%d", &opcao);
+	
+	system("cls");
+	
+	switch(opcao)
+	{
+		case 1:
+			consultar();
+			break;
+		case 2:
+			registrar();
+			break;
+		case 3:
+			deletar();
+				break;
+		
+		default:
+			main();
+			break;	
+	} 	
+	
 	
 	
 }
@@ -103,6 +164,7 @@ int deletar() //Função responsavel por deletar usuário no sistema
 {
 	setlocale(LC_ALL, "portuguese");//Definindo a linguagem usada
 	
+	int opcao=0;
 	char cpf[40]; //criação de variavel/string
 	
 	printf("*** Cartório da EBAC ***\n\n"); //Nome do programa
@@ -130,7 +192,34 @@ int deletar() //Função responsavel por deletar usuário no sistema
 	}
 
 	system("pause");
+	system("cls"); 
 	
+	printf("O que deseja fazer agora?\n\n");
+	printf("\t1 - Deletar outro nome\n");
+	printf("\t2 - Registrar nomes\n");
+	printf("\t3 - Consultar nomes\n");
+	printf("\t4 - Voltar ao Menu\n\n");
+	printf("Digite a opção desejada: ");
+	scanf("%d", &opcao);
+	
+	system("cls");
+	
+	switch(opcao)
+	{
+		case 1:
+			deletar();
+			break;
+		case 2:
+			registrar();
+			break;
+		case 3:
+			consultar();
+				break;
+		
+		default:
+			main();
+			break;	
+	} 	
 }
 
 int main() //Função_Principal
