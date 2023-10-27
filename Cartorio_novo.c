@@ -91,7 +91,6 @@ int registrar() //Função responsavel por cadastar os usuários no sistema
 				break;
 		
 		default:
-			main();
 			break;	
 	} 	
 }
@@ -152,7 +151,6 @@ int consultar() //Função responsavel por consultar usuários no sistema
 				break;
 		
 		default:
-			main();
 			break;	
 	} 	
 	
@@ -217,7 +215,6 @@ int deletar() //Função responsavel por deletar usuário no sistema
 				break;
 		
 		default:
-			main();
 			break;	
 	} 	
 }
@@ -226,51 +223,65 @@ int main() //Função_Principal
 {
 	int opcao=0; //Definido variáveis
 	int loop=1;
+	char senhadigitada[12]="a";
+	int comparacao;
 	
-	for(loop=1;loop=1;)
+	printf("*** Cartório da EBAC ***\n\n");
+	printf("Login de administrador!\nDigite a sua senha: ");
+	scanf("%s",senhadigitada);
+	
+	comparacao = strcmp(senhadigitada, "admin"); //comparação de string
+	
+	if(comparacao == 0)
 	{
-		system("cls"); //responsavel por limpar a tela
+		system("cls");
+		for(loop=1;loop=1;)
+		{	
+			system("cls"); //responsavel por limpar a tela
 		
-		setlocale(LC_ALL, "portuguese"); //Definindo a linguagem usada
+			setlocale(LC_ALL, "portuguese"); //Definindo a linguagem usada
 	
-		printf("*** Cartório da EBAC ***\n\n"); //Nome do programa
-		printf("Escolha a opção desejada\n\n"); //início do Menu
-		printf("\t1 - Registrar nomes\n");
-		printf("\t2 - Consultar nomes\n");
-		printf("\t3 - Deletar nomes\n");
-		printf("\t4 - Sair do sistema\n\n"); //Fim do menu
-		printf("Esse Software foi criado pelo programador VictorMaterco\n\n"); //assinatura do criador
-		printf(" Digite a opção desejada: "); //escolha do usuário
-		scanf("%d", &opcao); //armazenando a escolha do usuário
+			printf("*** Cartório da EBAC ***\n\n"); //Nome do programa
+			printf("Escolha a opção desejada\n\n"); //início do Menu
+			printf("\t1 - Registrar nomes\n");
+			printf("\t2 - Consultar nomes\n");
+			printf("\t3 - Deletar nomes\n");
+			printf("\t4 - Sair do sistema\n\n"); //Fim do menu
+			printf("Esse Software foi criado pelo programador VictorMaterco\n\n"); //assinatura do criador
+			printf(" Digite a opção desejada: "); //escolha do usuário
+			scanf("%d", &opcao); //armazenando a escolha do usuário
 	
-		system("cls"); //responsavel por limpar a tela
+			system("cls"); //responsavel por limpar a tela
 		
-		switch(opcao) //início da seleção
-		{
-			case 1:
-				registrar(); //chamada de funções
-				break;
+			switch(opcao) //início da seleção
+			{
+				case 1:
+					registrar(); //chamada de funções
+					break;
 			
-			case 2:
-				consultar();
-				break;
+				case 2:
+					consultar();
+					break;
 			
-			case 3:
-				deletar();
-				break;
+				case 3:
+					deletar();
+					break;
 				
-			case 4:
-				printf("*** Cartório da EBAC ***\n\n");
-				printf("Obrigado por utilizar nosso sistema!");
-				return 0;
-				break;
+				case 4:
+					printf("*** Cartório da EBAC ***\n\n");
+					printf("Obrigado por utilizar nosso sistema!");
+					return 0;
+					break;
 				
-			default:
-				printf("*** Cartório da EBAC ***\n\n"); //Nome do programa
-				printf("Essa opção não está disponível!\n\n");
-				system("pause");
-				break;		
-		} //Fim da seleção
+				default:
+					printf("*** Cartório da EBAC ***\n\n"); //Nome do programa
+					printf("Essa opção não está disponível!\n\n");
+					system("pause");
+					break;		
+			} //Fim da seleção
+		}
 	}
+	else
+		printf("Senha incorreta!");
 }
 
