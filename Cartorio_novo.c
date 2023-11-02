@@ -6,7 +6,9 @@
 
 int registrar() //Função responsavel por cadastar os usuários no sistema
 {
+	
 	setlocale(LC_ALL, "portuguese"); //Definindo a linguagem usada
+	
 	//início criação de variáveis/string
 	char opcao=0;
 	char cpf[40]; 
@@ -97,7 +99,9 @@ int registrar() //Função responsavel por cadastar os usuários no sistema
 
 int consultar() //Função responsavel por consultar usuários no sistema
 {
+	
 	setlocale(LC_ALL, "portuguese");//Definindo a linguagem usada
+	
 	//criação de variáveis/strings
 	int opcao=0;
 	char cpf[40];
@@ -105,7 +109,7 @@ int consultar() //Função responsavel por consultar usuários no sistema
 	//final da criação
 	
 	printf("*** Cartório da EBAC ****\n\n");//Nome do programa
-	printf("Digite o CPF a ser consultado: ");
+	printf("Digite o CPF a ser consultado: "); //recebendo qual usuário será consultado.
 	scanf("%s", cpf);
 	
 	FILE *file;
@@ -115,7 +119,6 @@ int consultar() //Função responsavel por consultar usuários no sistema
 	{
 		printf("\nNão achamos esse número de CPF em nosso sistema, tente novamente!\n\n");
 		system("pause");
-		system("cls");
 	}
 	
 	while(fgets(conteudo, 200, file) != NULL) //pegando os dados do usuário no banco de dados
@@ -123,9 +126,9 @@ int consultar() //Função responsavel por consultar usuários no sistema
 		printf("\nEssas são as informações do usuário: ");
 		printf("%s", conteudo);
 		printf("\n\n");
+		system("pause");
 	}
 	
-	system("pause");
 	system("cls");
 	
 	printf("O que deseja fazer agora?\n\n");
@@ -227,7 +230,7 @@ int main() //Função_Principal
 	int comparacao;
 	
 	printf("*** Cartório da EBAC ***\n\n");
-	printf("Login de administrador!\nDigite a sua senha: ");
+	printf("Login de administrador!\nDigite a sua senha: "); //solicitação da senha do admin
 	scanf("%s",senhadigitada);
 	
 	comparacao = strcmp(senhadigitada, "admin"); //comparação de string
@@ -270,7 +273,7 @@ int main() //Função_Principal
 				case 4:
 					printf("*** Cartório da EBAC ***\n\n");
 					printf("Obrigado por utilizar nosso sistema!");
-					return 0;
+					return 0; //quebra de código para sair do sistema.
 					break;
 				
 				default:
